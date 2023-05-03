@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> Clusters Overview </h1>
+
+<div>
+    <h4 style="margin-left: 20%;">Main Cluster</h4>
+    <table class="clickable-table">
+        <caption> Note: Pod Names are clickable-table</caption>
+        <thead>
+          <tr>
+            <th>Pod Name</th>
+            <th>Pod ID</th>
+            <th>Number of Nodes</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for l in lst %}
+          <tr>
+            <td><a href="/cloud/dashboard/cluster/{{l[1]}}">{{ l[0] }}</a></td>
+            <td>{{ l[1] }}</td>
+            <td>{{ l[2] }}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

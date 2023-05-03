@@ -1,0 +1,48 @@
+global
+	log /dev/log	local0
+	log /dev/log	local1 notice
+	chroot /var/lib/haproxy
+	stats socket /var/run/haproxy.sock level admin
+	maxconn 10000
+	tune.ssl.default-dh-param 2048	
+
+defaults
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+	option 	forwardfor
+	retries 3
+       	timeout connect 50000
+      	timeout client  500000
+     	timeout server  500000
+
+frontend http-in
+	bind *:5000
+  	bind *:5001
+  	bind *:5002	
+	
+        maxconn 5000		
+	
+	acl light-servers dst_port 5000
+	acl medium-servers dst_port 5001
+	acl heavy-servers dst_port 5002
+
+        use_backend light-servers if light-servers
+        use_backend medium-servers if medium-servers
+        use_backend heavy-servers if heavy-servers
+
+backend light-servers
+	balance roundrobin
+	option http-server-close
+	option http-keep-alive
+
+backend medium-servers
+	balance roundrobin
+        option http-server-close
+        option http-keep-alive
+
+backend heavy-servers
+        balance roundrobin
+        option http-server-close
+        option http-keep-alive

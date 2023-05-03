@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
+    <title>Monitoring Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="toolbar">
+        <ul class="toolbar-tabs">
+          <li class="title">Cloudy</li>
+          <li class="toolbar-tab"><a id="nav-link1" href="/cloud/dashboard">Overview</a></li>
+          <li class="toolbar-tab"><a id="nav-link2" href="/cloud/dashboard/stats">Statistics</a></li>
+        </ul>
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+  </body>
+  <script src="/static/script.js"></script>
+</html>

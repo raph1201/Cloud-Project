@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome to our Cloud</h2>
+<p>Nav links are only available once the cloud is connected</p>
+<div class="server-status">
+  <h3 id="init">{{ cloud_status }}</h3>
+</div>
+<h3 class="total-requests">Total Requests: {{ total_requests }}</h3>
+
+<main>
+  <section class="card">
+    <h2><a id='title-1' href="/cloud/dashboard/cluster/L">Light Pod</a></h2>
+    <div class="card-stats">
+      <div class="inner-text">
+        <p class="capacity">{{ light_avail }}</p>
+        <p id="dash" class="capacity">-</p>
+        <p class="capacity" id="cluster_num2" >20</p>
+        <p class="capacity">Nodes Registered</p>
+      </div>
+      <div class="card-details">
+        <p id="cluster_num">Resumed: {{ lt_resumed }}</p>
+        <p>Processing Requests: {{ lt_process }}</p>
+        <p>Total Requests: {{ lt_request }}</p>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <div id="cluster_bar" class="progress" style="width: 0%"></div>
+    </div>
+  </section>
+
+  <section class="card"> 
+    <h2><a id='title-2' href="/cloud/dashboard/cluster/M">Medium Pod</a></h2>
+    <div class="card-stats">
+      <div class="inner-text">
+        <p class="capacity"> {{ med_avail }} </p>
+        <p id="dash" class="capacity">-</p>
+        <p class="capacity" id="pod_num2" >15</p>
+        <p class="capacity">Nodes Registered</p>
+      </div>
+      <div class="card-details">
+        <p id="pod_num">Resumed: {{ med_resumed }}</p>
+        <p>Processing Requests: {{ med_process }}</p>
+        <p>Total Requests: {{ med_request }}</p>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <div id="pod_bar" class="progress" style="width: 0%"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><a id='title-3' href="/cloud/dashboard/cluster/H">Heavy Pod</a></h2>
+    <div class="card-stats">
+      <div class="inner-text">
+        <p class="capacity"> {{ heavy_avail }} </p>
+        <p id="dash" class="capacity">-</p>
+        <p class="capacity" id="node_num2" >10</p>
+        <p class="capacity">Nodes Registered</p>
+      </div>
+      <div class="card-details">
+        <p id="node_num1" >Resumed: {{ hv_resumed }}</p>
+        <p>Processing Requests: {{ hv_process }}</p>
+        <p>Total Requests: {{ hv_request }}</p>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <div id="node_bar" class="progress" style="width: 0%"></div>
+    </div>
+  </section>
+</main>
+{% endblock %}

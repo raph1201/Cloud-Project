@@ -1,0 +1,31 @@
+Steps to set up VM:
+1. Install pip 
+sudo apt update
+sudo apt install python3-pip
+
+2. Install Flask
+pip install Flask
+
+3. Install PyCurl
+sudo apt install curl
+
+4. Install Docker
+sudo snap install docker
+python3 -m pip install docker
+sudo chmod 666 /var/run/docker.sock
+
+[ONLY FOR RM]
+5. Install socat
+sudo apt install socat
+
+[ONLY FOR RM]
+6. Install Haproxy
+sudo apt install haproxy
+
+7. Access, Check & Refresh Haproxy (in RM):
+sudo vim /etc/haproxy/haproxy.cfg
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+sudo systemctl restart haproxy
+
+8. Watch LB in real-time:
+watch 'echo "show stat" | sudo socat stdio /var/run/haproxy.sock | cut -d "," -f 1-2,5-10,34-36 | column -s, -t'

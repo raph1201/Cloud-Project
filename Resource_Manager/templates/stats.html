@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    <h2>HAProxy Stats</h2>
+    <table id="stat_tbl">
+        <thead>
+          <tr id="stat_tr">
+            <th id="stat_th">Backend Server</th>
+            <th id="stat_th">Current Sessions</th>
+            <th id="stat_th">Max Sessions</th>
+            <th id="stat_th">Total Sessions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(0, len) %}
+          <tr>
+            <td id="stat_td">{{ info_dct["pxname"][i] + " - " + info_dct["svname"][i] }}</td>
+            <td id="stat_td">{{ info_dct["scur"][i] }}</td>
+            <td id="stat_td">{{ info_dct["smax"][i] }}</td>
+            <td id="stat_td">{{ info_dct["stot"][i] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</main>
+
+{% endblock %}

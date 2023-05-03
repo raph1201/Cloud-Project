@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> {{ pod_id }} </h1>
+<div id="running">
+  <h4 id="running-{{ unique_id }}" style="margin-left: 20%;">{{ running }}</h4>
+</div>
+
+    <div>
+        <table class="clickable-table">
+            <thead>
+              <tr>
+                <th>Node Name</th>
+                <th>Node ID</th>
+                <th>Node Status</th>
+                <th>Node Port</th>
+                <th>Processing</th>
+                <th>Total Requests</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for l in lst %}
+              <tr>
+                <td>{{ l[0] }}</td>
+                <td>{{ l[1] }}</td>
+                <td>{{ l[2] }}</td>
+                <td>{{ l[3] }}</td>
+                <td>{{ l[4] }}</td>
+                <td>{{ l[5] }}</td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+{% endblock %}
